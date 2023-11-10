@@ -8,6 +8,7 @@ const NavLinks = [
 export default function TheHeader() {
   return (
     <header
+      className="Header"
       style={{
         display: "flex",
         width: 100 + "wv",
@@ -19,7 +20,7 @@ export default function TheHeader() {
         className="Name"
         style={{ color: "white", width: 20 + "%", fontSize: 15 + "px" }}
       >
-        <h1>MyApp</h1>
+        <h1 style={{ color: "white" }}>MyApp</h1>
       </div>
       <Navigation NavLinks={NavLinks}></Navigation>
     </header>

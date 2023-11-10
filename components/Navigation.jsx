@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 export default function Navigation({ NavLinks }) {
   const session = useSession();
+  console.log(session);
   return (
     <div
       className="Links"
@@ -19,7 +20,7 @@ export default function Navigation({ NavLinks }) {
           <Link
             href={item.href}
             key={item.id}
-            style={{ color: "white", textDecoration: "none" }}
+            style={{ textDecoration: "none", color: "white" }}
           >
             {item.label}
           </Link>
@@ -49,7 +50,7 @@ export default function Navigation({ NavLinks }) {
         </Link>
       ) : (
         <Link
-          href="/register"
+          href="/login"
           style={{
             color: "white",
             textDecoration: "none",

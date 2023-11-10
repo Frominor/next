@@ -14,4 +14,4 @@ const GoogleButton = () => {
   );
 };
 
-export { GoogleButton };
+export { GoogleButton as GitHubButton };

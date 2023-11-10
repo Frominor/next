@@ -2,17 +2,26 @@ import { NextResponse } from "next/server";
 import User from "../../../../models/User";
 import { CoonectDb } from "../../connect";
 export const POST = async (req) => {
-  const { name, email, password } = await req.json();
-  await CoonectDb();
+  const body = await req.json();
+  const name = body.name;
+
+  const password = body.password;
+  const email = body.email;
+
   const user = new User({
     name,
     password,
     email,
   });
-  try {
+  if (user) {
     await user.save();
-    return new NextResponse("Человечек создался");
-  } catch (error) {
-    return new NextResponse("Человечек не создался");
+    return NextResponse.json({
+      name,
+      password,
+      email,
+      message: "Пользователь создан",
+    });
+  } else {
+    return NextResponse.json({ message: "Ошибка" });
   }
 };
