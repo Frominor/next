@@ -1,7 +1,8 @@
 "use client";
-
+import AuthButton from "../../components/authbutton";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import React from "react";
 import {
   Box,
   Button,
@@ -13,21 +14,30 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
-import { useSearchParams } from "next/navigation";
+
 import Link from "next/link";
 import { useForm, Controller, useFormState } from "react-hook-form";
-import GitHubIcon from "@mui/icons-material/GitHub";
+
 const theme = createTheme();
 const SignInForm = () => {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
+  const [ErrorMessage, SetErrorMessage] = React.useState(null);
   const { handleSubmit, control } = useForm({ mode: "onSubmit" });
   const router = useRouter();
   const { errors } = useFormState({
     control,
   });
   const onSubmit = async (obj) => {
-    const { password, email } = obj;
+    const res = await signIn("credentials", {
+      ...obj,
+      redirect: false,
+    });
+    if (res.error) {
+      if (res.error == "Cannot read properties of null (reading email)") {
+        SetErrorMessage("Пользователь не найден");
+      } else {
+        SetErrorMessage("Пользователь не найден");
+      }
+    }
   };
   return (
     <ThemeProvider theme={theme}>
@@ -44,15 +54,15 @@ const SignInForm = () => {
             <svg
               style={{ marginTop: 70 + "px" }}
               xmlns="http://www.w3.org/2000/svg"
-              class="site__logo"
+              className="site__logo"
               width="56"
               height="84"
               viewBox="77.7 214.9 274.7 412"
             >
               <defs>
                 <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                  <stop offset="0%" stop-color="#8ceabb" />
-                  <stop offset="100%" stop-color="#378f7b" />
+                  <stop offset="0%" stopColor="#8ceabb" />
+                  <stop offset="100%" stopColor="#378f7b" />
                 </linearGradient>
               </defs>
               <path
@@ -152,38 +162,21 @@ const SignInForm = () => {
             </Button>
           </Box>
           <Box>
-            <Button
-              sx={{
-                ":hover": {
-                  background: "none",
-                },
-                cursor: "default",
-                background: "none",
-                color: "black",
-              }}
-              disableRipple
-              onClick={() => {
-                signIn("github", { callbackUrl });
-              }}
-            >
-              {" "}
-              <GitHubIcon
-                sx={{
-                  ":hover": {
-                    cursor: "pointer",
-                    transform: "scale(1.5)",
-                  },
-                }}
-              ></GitHubIcon>
-            </Button>
+            <AuthButton where={"github"} icon={"github"}></AuthButton>
+            <AuthButton where={"vk"} icon={"vk"}></AuthButton>
+            <AuthButton where={"yandex"} icon={"yandex"}></AuthButton>
           </Box>
         </Box>
+        {ErrorMessage !== null ? (
+          <h2 style={{ textAlign: "center", color: "red", fontSize: 30 }}>
+            {ErrorMessage}!
+          </h2>
+        ) : (
+          ""
+        )}
       </Container>
     </ThemeProvider>
   );
 };
 
 export default SignInForm;
-// //  <button onClick={() => signIn("github", { callbackUrl })}>
-// Sign in with GitHub
-// // </button>

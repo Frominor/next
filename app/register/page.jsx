@@ -58,15 +58,15 @@ export default function SignIn() {
             <svg
               style={{ marginTop: 70 + "px" }}
               xmlns="http://www.w3.org/2000/svg"
-              class="site__logo"
+              className="site__logo"
               width="56"
               height="84"
               viewBox="77.7 214.9 274.7 412"
             >
               <defs>
                 <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                  <stop offset="0%" stop-color="#8ceabb" />
-                  <stop offset="100%" stop-color="#378f7b" />
+                  <stop offset="0%" stopColor="#8ceabb" />
+                  <stop offset="100%" stopColor="#378f7b" />
                 </linearGradient>
               </defs>
               <path
@@ -206,7 +206,11 @@ export default function SignIn() {
                   <Button
                     className="already"
                     variant="cover"
+                    disableRipple
                     sx={{
+                      ":hover": {
+                        background: "none",
+                      },
                       color: "white",
                     }}
                   >

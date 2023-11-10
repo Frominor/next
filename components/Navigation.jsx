@@ -1,16 +1,15 @@
 "use client";
 import Link from "next/link";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 export default function Navigation({ NavLinks }) {
   const session = useSession();
-  console.log(session);
   return (
     <div
       className="Links"
       style={{
         display: "flex",
-        width: 20 + "%",
+        width: 35 + "%",
         justifyContent: "space-between",
         alignItems: "center",
       }}
@@ -18,6 +17,7 @@ export default function Navigation({ NavLinks }) {
       {NavLinks.map((item) => {
         return (
           <Link
+            className="NavLink"
             href={item.href}
             key={item.id}
             style={{ textDecoration: "none", color: "white" }}
@@ -28,7 +28,7 @@ export default function Navigation({ NavLinks }) {
       })}
       {session?.data && (
         <Link style={{ color: "white" }} href="/profile">
-          Profile
+          Профиль
         </Link>
       )}
       {session?.data ? (
@@ -46,11 +46,11 @@ export default function Navigation({ NavLinks }) {
             })
           }
         >
-          SignOut
+          Выйти
         </Link>
       ) : (
         <Link
-          href="/login"
+          href="/register"
           style={{
             color: "white",
             textDecoration: "none",
@@ -59,7 +59,7 @@ export default function Navigation({ NavLinks }) {
             borderRadius: 5 + "px",
           }}
         >
-          SignIn{" "}
+          Регистрация
         </Link>
       )}
     </div>

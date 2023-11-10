@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Navigation from "./Navigation";
 const NavLinks = [
-  { label: "Home", id: 1, href: "/" },
-  { label: "Posts", id: 2, href: "/posts" },
-  { label: "About", id: 3, href: "/about" },
+  { label: "Домашняя страница", id: 1, href: "/" },
+  { label: "Посты", id: 2, href: "/posts" },
+  { label: "Не придумал", id: 3, href: "/about" },
 ];
 export default function TheHeader() {
   return (

@@ -54,7 +54,7 @@ body {
   color: white;
 }
 main {
-  height: 85vh;
+  height: 89.8vh;
   width: 100%;
   background: rgb(36, 70, 77);
   background: linear-gradient(
@@ -67,4 +67,15 @@ main {
 .already:hover {
   transform: scale(1.2) !important;
   background-color: none;
+}
+.authimg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.authimg:hover {
+  transform: scale(1.3);
+}
+.NavLink:hover {
+  border-bottom: 1px solid white;
 }
