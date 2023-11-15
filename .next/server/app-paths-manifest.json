@@ -1,6 +1,10 @@
 {
-  "/page": "app/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/posts/[id]/page": "app/posts/[id]/page.js",
+  "/posts/[id]/edit/page": "app/posts/[id]/edit/page.js",
   "/posts/page": "app/posts/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/login/page": "app/login/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/posts/route": "app/api/posts/route.js",
+  "/api/getpost/route": "app/api/getpost/route.js"
 }

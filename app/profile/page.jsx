@@ -5,7 +5,7 @@ export default async function Profile() {
   console.log(session);
   return (
     <div className="Profile">
-      <h1>{session?.user?.name}</h1>
+      <h1 style={{ margin: 0 }}>{session?.user?.name}</h1>
       <p>{session?.user?.email}</p>
       <img src={session?.user?.image}></img>
     </div>

@@ -2,6 +2,7 @@
 import Link from "next/link";
 
 import { useSession, signOut } from "next-auth/react";
+import { Button } from "@mui/material";
 export default function Navigation({ NavLinks }) {
   const session = useSession();
   return (
@@ -9,7 +10,8 @@ export default function Navigation({ NavLinks }) {
       className="Links"
       style={{
         display: "flex",
-        width: 35 + "%",
+        width: 40 + "%",
+        marginRight: 200,
         justifyContent: "space-between",
         alignItems: "center",
       }}
@@ -27,7 +29,11 @@ export default function Navigation({ NavLinks }) {
         );
       })}
       {session?.data && (
-        <Link style={{ color: "white" }} href="/profile">
+        <Link
+          className="NavLink"
+          style={{ color: "white", textDecoration: "none" }}
+          href="/profile"
+        >
           Профиль
         </Link>
       )}
@@ -36,8 +42,9 @@ export default function Navigation({ NavLinks }) {
           style={{
             color: "white",
             background: "red",
-            padding: 5 + "px",
+            textDecoration: "none",
             borderRadius: 5 + "px",
+            padding: 5,
           }}
           href={"#"}
           onClick={() =>
@@ -55,7 +62,7 @@ export default function Navigation({ NavLinks }) {
             color: "white",
             textDecoration: "none",
             background: "#389374",
-            padding: 3 + "px",
+            padding: 5 + "px",
             borderRadius: 5 + "px",
           }}
         >

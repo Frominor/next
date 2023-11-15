@@ -1,9 +1,9 @@
-import Link from "next/link";
 import Navigation from "./Navigation";
+import Container from "@mui/material/Container";
 const NavLinks = [
   { label: "Домашняя страница", id: 1, href: "/" },
   { label: "Посты", id: 2, href: "/posts" },
-  { label: "Не придумал", id: 3, href: "/about" },
+  { label: "Создать пост", id: 3, href: "/createpost" },
 ];
 export default function TheHeader() {
   return (
@@ -13,15 +13,16 @@ export default function TheHeader() {
         display: "flex",
         width: 100 + "wv",
         alignItems: "center",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
       }}
     >
-      <div
+      <Container
+        component={"div"}
         className="Name"
-        style={{ color: "white", width: 20 + "%", fontSize: 15 + "px" }}
+        sx={{ color: "white", width: 20 + "%" }}
       >
         <h1 style={{ color: "white" }}>MyApp</h1>
-      </div>
+      </Container>
       <Navigation NavLinks={NavLinks}></Navigation>
     </header>
   );

@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import User from "../../../../models/User";
-import { CoonectDb } from "../../connect";
 export const POST = async (req) => {
   const body = await req.json();
   const name = body.name;
